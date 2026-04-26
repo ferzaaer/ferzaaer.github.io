@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Ferza Er</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f3f5;
+            color: #2f3542;
+        }
+
+        .page-wrapper {
+            width: min(960px, 92%);
+            margin: 32px auto;
+            background-color: #ffffff;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #dfe4ea;
+        }
+
+        h1,
+        h2 {
+            margin-top: 0;
+        }
+
+        nav {
+            margin-bottom: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-section {
+            margin-bottom: 24px;
+        }
+
+        .contact-container {
+            width: min(700px, 100%);
+            margin: 0 auto;
+            padding: 26px;
+            border: 1px solid #d6dbe1;
+            border-radius: 10px;
+            background-color: #f7f8fa;
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 18px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-bottom: 18px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin-bottom: 18px;
+            padding: 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        button[type="submit"],
+        button[type="reset"] {
+            flex: 1;
+            max-width: 300px;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        button[type="submit"] {
+            background-color: #0d6efd;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0b5ed7;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <h1>Ferza Er - CV</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html">İlgi Alanlarım</a></li>
+                <li><a href="cv.html">İletişim</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-container">
+            <h2>Detaylı İletişim Formu</h2>
+            <form action="#" method="post">
+                <!-- Ad Soyad -->
+                <div class="form-group">
+                    <label for="fullName">Ad Soyad:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Örn: Asaf Karataş" required>
+                </div>
+
+                <!-- E-posta Adresi -->
+                <div class="form-group">
+                    <label for="email">E-posta Adresi:</label>
+                    <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+                </div>
+
+                <!-- Başvuru Takip Şifresi -->
+                <div class="form-group">
+                    <label for="password">Başvuru Takip Şifresi:</label>
+                    <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
+                </div>
+
+                <!-- İletişim Tercihi -->
+                <div class="form-group">
+                    <label>İletişim Tercihi:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="contactMethod" value="email" checked>
+                            Bana e-posta ile ulaşın
+                        </label>
+                        <label>
+                            <input type="radio" name="contactMethod" value="phone">
+                            Bana telefonla ulaşın
+                        </label>
+                    </div>
+                </div>
+
+                <!-- İlgi Alanları / Yetenekler -->
+                <div class="form-group">
+                    <label>İlgi Alanları / Yetenekler:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="skills" value="html">
+                            HTML
+                        </label>
+                        <label>
+                            <input type="checkbox" name="skills" value="css">
+                            CSS
+                        </label>
+                        <label>
+                            <input type="checkbox" name="skills" value="algorithm">
+                            Algoritma
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Konu -->
+                <div class="form-group">
+                    <label for="subject">Konu:</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" selected disabled>Lütfen bir konu seçin...</option>
+                        <option value="is-teklifi">İş Teklifi</option>
+                        <option value="soru">Soru</option>
+                        <option value="geri-bildirim">Geri Bildirim</option>
+                    </select>
+                </div>
+
+                <!-- Özgeçmiş (CV) Yükleme -->
+                <div class="form-group">
+                    <label for="cvFile">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+                    <input type="file" id="cvFile" name="cvFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                </div>
+
+                <!-- Mesajınız -->
+                <div class="form-group">
+                    <label for="message">Mesajınız:</label>
+                    <textarea id="message" name="message" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."
+                        required></textarea>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="button-group">
+                    <button type="submit">Gönder</button>
+                    <button type="reset">Temizle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

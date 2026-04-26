@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hafta 5 Lab Sayfaları</title>
+  <style>
+    :root {
+      --bg: #fce4f0;
+      --card: rgba(255, 20, 147, 0.06);
+      --stroke: rgba(230, 51, 132, 0.14);
+      --text: rgba(26, 26, 46, 0.92);
+      --muted: rgba(26, 26, 46, 0.7);
+      --accent: #e63384;
+      --accent2: #ff69b4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1000px circle at 10% 0%, rgba(230, 51, 132, 0.15), transparent 45%),
+        radial-gradient(900px circle at 90% 20%, rgba(255, 105, 180, 0.12), transparent 50%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      letter-spacing: 0.2px;
+    }
+
+    p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .link-card {
+      position: relative;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(230, 51, 132, 0.08), rgba(230, 51, 132, 0.04));
+      border-radius: 18px;
+      padding: 18px;
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(230, 51, 132, 0.6);
+      background: linear-gradient(180deg,
+          rgba(230, 51, 132, 0.16),
+          rgba(230, 51, 132, 0.04));
+    }
+
+    .link-card:active {
+      transform: translateY(0);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Hafta 5 - GitHub Pages Lab Örnekleri</h1>
+      <span class="pill">Sadece HTML + CSS</span>
+    </header>
+
+    <p>
+      Bu sayfa, laboratuvar çalışmalarınızın demo sayfalarına tek tıkla geçiş içindir.
+    </p>
+
+    <div style="margin-top: 18px">
+      <a class="link-card" href="./lab-position.html" aria-label="Lab: CSS Position">
+        <div>
+          <div style="font-weight: 700; margin-bottom: 4px">LAB: CSS Position ile Etkileşimli Duyuru Kartı</div>
+          <div style="color: rgba(255, 255, 255, 0.7); font-size: 14px">
+            `relative`, `absolute` ve `fixed` ile kart arayüzü
+          </div>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </a>
+
+      <a class="link-card" href="../hafta7/index.html" aria-label="Laboratuvar Ana Sayfası">
+        <div>
+          <div style="font-weight: 700; margin-bottom: 4px">← Laboratuvar Ana Sayfası</div>
+          <div style="color: rgba(255, 255, 255, 0.7); font-size: 14px">
+            Tüm haftalara geri dön
+          </div>
+        </div>
+        <div class="arrow" aria-hidden="true">←</div>
+      </a>
+    </div>
+
+    <footer>© <span id="year">2026</span> Hafta 5 - Çalışma Alanı</footer>
+  </div>
+</body>
+
+</html>

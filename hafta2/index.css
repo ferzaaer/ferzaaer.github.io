@@ -1,0 +1,91 @@
+/* GENEL */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8d7e8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #e63384;
+}
+
+/* HEADER */
+header h1 {
+    margin: 0;
+}
+
+/* NAV */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    background-color: #e63384;
+    color: #fff;
+}
+
+/* MAIN LAYOUT */
+main {
+    margin-top: 20px;
+    font-size: 0;
+}
+
+/* SOL KUTU */
+.content {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #ffb6d9;
+    padding: 15px;
+    border: 1px solid #e63384;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* SAĞ KUTU */
+.sidebar {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f8bbd0;
+    padding: 15px;
+    border: 1px solid #e63384;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* METİN */
+.content p,
+.sidebar p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}

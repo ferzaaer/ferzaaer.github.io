@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratuvar Ana Sayfası - Web Programlama Dersi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="badge">Web Programlama Dersi</div>
+            <h1 class="title">Laboratuvar Ana Sayfası</h1>
+            <p class="description">
+                Bu sayfa GitHub Pages üzerinde yayınlanan laboratuvar uygulamalarına giriş için
+                hazırlanmıştır. Aşağıdaki buttondan hafta 7 uygulamasına geçebilirsiniz.
+            </p>
+
+            <div class="button-group">
+                <a href="#hafta7" class="btn btn--primary">Hafta 7 Uygulamasına Git</a>
+                <button class="btn btn--secondary" id="otherWeeksBtn">Diğer Haftalar</button>
+            </div>
+        </header>
+
+        <section class="weeks-grid">
+            <article class="week-card" id="hafta1">
+                <h3 class="week-card__title">Hafta 1</h3>
+                <p class="week-card__subtitle">GitHub Pages</p>
+                <a href="../hafta1/index.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+
+            <article class="week-card" id="hafta2">
+                <h3 class="week-card__title">Hafta 2</h3>
+                <p class="week-card__subtitle">HTML + CSS</p>
+                <a href="../hafta2/index.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+
+            <article class="week-card" id="hafta3">
+                <h3 class="week-card__title">Hafta 3</h3>
+                <p class="week-card__subtitle">Form Yapıları</p>
+                <a href="../hafta3/index.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+
+            <article class="week-card" id="hafta4">
+                <h3 class="week-card__title">Hafta 4</h3>
+                <p class="week-card__subtitle">Flexbox</p>
+                <a href="../hafta4/index.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+
+            <article class="week-card" id="hafta5">
+                <h3 class="week-card__title">Hafta 5</h3>
+                <p class="week-card__subtitle">Position</p>
+                <a href="../hafta5/index.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+
+            <article class="week-card" id="hafta6">
+                <h3 class="week-card__title">Hafta 6</h3>
+                <p class="week-card__subtitle">JavaScript</p>
+                <a href="../hafta6/uygulama1.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+
+            <article class="week-card" id="hafta7">
+                <h3 class="week-card__title">Hafta 7</h3>
+                <p class="week-card__subtitle">Bootstrap + JavaScript</p>
+                <a href="hafta7.html" class="week-card__link">Ziyaret Et →</a>
+            </article>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__brand">WP Lab</div>
+            <nav class="footer__nav">
+                <a href="#" class="footer__link">Ana Sayfa</a>
+                <a href="#" class="footer__link">Atölyeler</a>
+                <a href="#" class="footer__link">Başvuru</a>
+                <a href="#" class="footer__link">Sonuç</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

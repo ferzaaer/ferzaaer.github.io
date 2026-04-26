@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uygulama-2 | Birim Dönüştürücü</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="page">
+        <header class="page__header">
+            <h1>Uygulama-2</h1>
+            <p>Birim dönüştürücü</p>
+
+            <nav class="nav" aria-label="Sayfa geçişi">
+                <a class="nav__link" href="index.html">Uygulama-1</a>
+                <a class="nav__link nav__link--active" href="uygulama2.html" aria-current="page">Uygulama-2</a>
+                <a class="nav__link" href="../hafta7/index.html">← Laboratuvar</a>
+            </nav>
+        </header>
+
+        <section class="section" aria-labelledby="app2-title">
+            <h2 id="app2-title">Birim Dönüştürücü</h2>
+
+            <div class="card">
+                <form id="convertForm" class="form" novalidate>
+                    <label class="field">
+                        <span class="field__label">Değer Giriniz</span>
+                        <input id="convertValue" class="field__input" type="text" inputmode="decimal"
+                            placeholder="Örn: 50" required />
+                    </label>
+
+                    <label class="field">
+                        <span class="field__label">Dönüşüm Tipi</span>
+                        <select id="convertType" class="field__input" required></select>
+                    </label>
+
+                    <button class="btn btn--primary" type="submit">Hesapla</button>
+
+                    <p id="convertError" class="error" role="alert" aria-live="polite" hidden></p>
+                </form>
+
+                <div id="convertResult" class="result result--success" hidden>
+                    <h3 class="result__title">Sonuç</h3>
+                    <p id="convertOutput" class="result__value"></p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page__footer">
+            <small>Sıcaklık / Uzunluk / Ağırlık dönüşümleri</small>
+        </footer>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

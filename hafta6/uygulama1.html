@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uygulama-1 | Öğrenci Not Hesaplama</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="page">
+        <header class="page__header">
+            <h1>Uygulama-1</h1>
+            <p>Öğrenci not hesaplama</p>
+
+            <nav class="nav" aria-label="Sayfa geçişi">
+                <a class="nav__link nav__link--active" href="index.html" aria-current="page">Uygulama-1</a>
+                <a class="nav__link" href="uygulama2.html">Uygulama-2</a>
+                <a class="nav__link" href="../hafta7/index.html">← Laboratuvar</a>
+            </nav>
+        </header>
+
+        <section class="section" aria-labelledby="app1-title">
+            <h2 id="app1-title">Öğrenci Not Hesaplama</h2>
+
+            <div class="card">
+                <form id="gradeForm" class="form" novalidate>
+                    <label class="field">
+                        <span class="field__label">Ad Soyad</span>
+                        <input id="studentName" class="field__input" type="text" placeholder="Örn: Filiz Akın"
+                            autocomplete="name" required />
+                    </label>
+
+                    <label class="field">
+                        <span class="field__label">Vize Notu</span>
+                        <input id="midterm" class="field__input" type="text" inputmode="decimal" placeholder="0 - 100"
+                            required />
+                    </label>
+
+                    <label class="field">
+                        <span class="field__label">Final Notu</span>
+                        <input id="final" class="field__input" type="text" inputmode="decimal" placeholder="0 - 100"
+                            required />
+                    </label>
+
+                    <button class="btn" type="submit">Hesapla</button>
+
+                    <p id="gradeError" class="error" role="alert" aria-live="polite" hidden></p>
+                </form>
+
+                <div id="gradeResult" class="result" hidden>
+                    <h3 id="resultName" class="result__title"></h3>
+                    <dl class="result__grid">
+                        <div class="result__row">
+                            <dt>Ortalama</dt>
+                            <dd id="resultAvg"></dd>
+                        </div>
+                        <div class="result__row">
+                            <dt>Harf Notu</dt>
+                            <dd id="resultLetter"></dd>
+                        </div>
+                        <div class="result__row">
+                            <dt>Durum</dt>
+                            <dd id="resultStatus"></dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page__footer">
+            <small>Vize %40, Final %60 — Ortalama ≥ 50 ise Geçti</small>
+        </footer>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
