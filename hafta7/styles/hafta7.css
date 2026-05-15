@@ -2,10 +2,10 @@
     --page-bg: #ffffff;
     --page-text: #0f172a;
     --page-muted: #475569;
-    --page-border: rgba(37, 99, 235, 0.13);
-    --page-soft: #f8fbff;
-    --page-primary: #2563eb;
-    --page-primary-strong: #1d4ed8;
+    --page-border: rgba(236, 72, 153, 0.13);
+    --page-soft: #fff7fb;
+    --page-primary: #ec4899;
+    --page-primary-strong: #be185d;
 }
 
 html {
@@ -15,7 +15,7 @@ html {
 body {
     min-height: 100vh;
     background:
-        radial-gradient(circle at top left, rgba(96, 165, 250, 0.09), transparent 28%),
+        radial-gradient(circle at top left, rgba(249, 168, 212, 0.09), transparent 28%),
         var(--page-bg);
     color: var(--page-text);
     font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
@@ -81,14 +81,14 @@ body {
 .form-control,
 .form-select,
 .form-check-input {
-    border-color: rgba(37, 99, 235, 0.18);
+    border-color: rgba(236, 72, 153, 0.18);
 }
 
 .form-control:focus,
 .form-select:focus,
 .form-check-input:focus {
     border-color: var(--page-primary);
-    box-shadow: 0 0 0 0.22rem rgba(37, 99, 235, 0.16);
+    box-shadow: 0 0 0 0.22rem rgba(236, 72, 153, 0.16);
 }
 
 .btn {
@@ -108,7 +108,7 @@ body {
 
 .btn-outline-primary {
     color: var(--page-primary-strong);
-    border-color: rgba(37, 99, 235, 0.35);
+    border-color: rgba(236, 72, 153, 0.35);
 }
 
 .btn-outline-primary:hover {
@@ -122,7 +122,7 @@ body {
 }
 
 .footer-section {
-    background: linear-gradient(180deg, var(--page-primary-strong), #0f172a);
+    background: linear-gradient(180deg, var(--page-primary-strong), #831843);
     color: #ffffff;
 }
 
@@ -137,12 +137,12 @@ body {
 
 body.dark-mode {
     --page-bg: #0f172a;
-    --page-text: #f8fafc;
+    --page-text: #fff7fb;
     --page-muted: #cbd5e1;
-    --page-border: rgba(147, 197, 253, 0.18);
+    --page-border: rgba(249, 168, 212, 0.18);
     --page-soft: #172033;
     background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.22), transparent 30%),
+        radial-gradient(circle at top left, rgba(236, 72, 153, 0.22), transparent 30%),
         var(--page-bg);
 }
 
@@ -167,7 +167,7 @@ body.dark-mode .section-soft {
 }
 
 body.dark-mode .alert-info {
-    background-color: rgba(37, 99, 235, 0.18);
+    background-color: rgba(236, 72, 153, 0.18);
     color: var(--page-text);
 }
 

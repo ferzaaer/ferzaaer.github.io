@@ -1,7 +1,7 @@
 /* GENEL */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8d7e8;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -11,7 +11,7 @@ body {
     margin: 30px auto;
     background-color: #fff;
     padding: 20px;
-    border: 1px solid #e63384;
+    border: 1px solid rgba(236, 72, 153, 0.14);
 }
 
 /* HEADER */
@@ -37,7 +37,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #e63384;
+    background-color: #ec4899;
     color: #fff;
 }
 
@@ -52,9 +52,9 @@ main {
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    background-color: #ffb6d9;
+    background-color: #fff7fb;
     padding: 15px;
-    border: 1px solid #e63384;
+    border: 1px solid rgba(236, 72, 153, 0.14);
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 14px;
@@ -65,9 +65,9 @@ main {
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    background-color: #f8bbd0;
+    background-color: #fff1f7;
     padding: 15px;
-    border: 1px solid #e63384;
+    border: 1px solid rgba(236, 72, 153, 0.14);
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 14px;
@@ -86,6 +86,6 @@ main {
 footer {
     margin-top: 20px;
     text-align: center;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid rgba(236, 72, 153, 0.14);
     padding-top: 10px;
 }

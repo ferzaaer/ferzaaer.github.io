@@ -1,21 +1,21 @@
 :root {
-    --bg: #fff0f7;
-    --bg2: #ffe0f0;
+    --bg: #ffffff;
+    --bg2: #fff1f7;
     --card: #ffffff;
-    --text: #0b1220;
-    --muted: #4a5565;
-    --border: #e63384;
-    --shadow: 0 10px 30px rgba(230, 51, 132, 0.08);
-    --shadowSm: 0 6px 16px rgba(230, 51, 132, 0.08);
-    --btn: #f8bbd0;
-    --btnHover: #ffb6d9;
-    --btnText: #0b1220;
-    --primary: #e63384;
-    --primaryHover: #c2185b;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: rgba(236, 72, 153, 0.14);
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --shadowSm: 0 6px 16px rgba(15, 23, 42, 0.08);
+    --btn: #fff1f7;
+    --btnHover: #fce7f3;
+    --btnText: #0f172a;
+    --primary: #ec4899;
+    --primaryHover: #be185d;
     --primaryText: #ffffff;
-    --focusRing: rgba(230, 51, 132, 0.16);
+    --focusRing: rgba(236, 72, 153, 0.14);
     --danger: #b42318;
-    --successBg: #dcfce7;
+    --successBg: #fce7f3;
 }
 
 * {
@@ -53,7 +53,7 @@ body {
     padding: 6px;
     border: 1px solid var(--border);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.72);
     box-shadow: var(--shadowSm);
 }
 
@@ -170,8 +170,8 @@ body {
 }
 
 .result--success {
-    background: var(--successBg);
-    border-color: rgba(22, 163, 74, 0.25);
+    background: #fff7fb;
+    border-color: rgba(236, 72, 153, 0.14);
 }
 
 .result__title {

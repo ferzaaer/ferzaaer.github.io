@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafta 8 | ASP.NET Core Projesi</title>
+    <link rel="stylesheet" href="../lab-theme.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(249, 168, 212, 0.08), transparent 32%),
+                radial-gradient(circle at top right, rgba(236, 72, 153, 0.06), transparent 30%),
+                #ffffff;
+            color: #0f172a;
+        }
+
+        body.lab-theme.week-page {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0 2rem;
+        }
+
+        .shell {
+            width: min(1120px, calc(100% - 2rem));
+            margin: 0 auto;
+        }
+
+        .topbar,
+        .panel,
+        .footer-panel {
+            border: 1px solid rgba(236, 72, 153, 0.12);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+            backdrop-filter: blur(16px);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+        }
+
+        .topbar a {
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .panel {
+            padding: clamp(1.2rem, 3vw, 2rem);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.7fr);
+            gap: 1rem;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 0.48rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(236, 72, 153, 0.08);
+            color: #be185d;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-top: 0;
+        }
+
+        .hero h1 {
+            margin: 1rem 0 0.85rem;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+        }
+
+        p {
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.4rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.9rem;
+            padding: 0.8rem 1.1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+        }
+
+        .button-primary {
+            color: #ffffff;
+            background: linear-gradient(135deg, #ec4899, #f9a8d4);
+        }
+
+        .button-secondary {
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(236, 72, 153, 0.12);
+        }
+
+        .info-grid,
+        .link-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .card {
+            padding: 1.2rem;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+            border: 1px solid rgba(236, 72, 153, 0.08);
+        }
+
+        .card strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #be185d;
+        }
+
+        .link-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .resource {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 1.1rem;
+            border-radius: 22px;
+            border: 1px solid rgba(236, 72, 153, 0.08);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .resource:hover {
+            transform: translateY(-3px);
+            border-color: rgba(236, 72, 153, 0.22);
+            box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+        }
+
+        .resource span {
+            display: block;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .footer-panel {
+            padding: 1.2rem 1.3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: linear-gradient(180deg, #be185d, #831843);
+            color: #ffffff;
+        }
+
+        .footer-panel p {
+            color: rgba(248, 250, 252, 0.84);
+        }
+
+        .footer-panel a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.55rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        @media (max-width: 900px) {
+
+            .hero,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body.lab-theme.week-page {
+                padding-top: 0.6rem;
+            }
+
+            .topbar,
+            .panel,
+            .footer-panel {
+                padding: 1rem;
+            }
+
+            .topbar,
+            .footer-panel {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body class="lab-theme week-page">
+    <div class="shell">
+        <header class="topbar" id="ust">
+            <a href="../index.html">Ana sayfaya dön</a>
+            <span>Hafta 8 | ASP.NET Core</span>
+        </header>
+    </div>
+
+    <main class="shell">
+        <section class="panel hero" aria-labelledby="week8-title">
+            <div>
+                <span class="eyebrow">Razor Pages ve proje yapısı</span>
+                <h1 id="week8-title">Hafta 8 için sade ama profesyonel bir proje giriş sayfası.</h1>
+                <p>Bu sayfa, ASP.NET Core projesine tarayıcıdan girilebilecek bir başlangıç noktası sağlar. Proje kodu,
+                    yapı ve çalışma dosyaları için en önemli bağlantılar burada toplanır.</p>
+
+                <div class="actions">
+                    <a class="button button-primary" href="AzureOdev/Pages/Index.cshtml">Ana Razor sayfası</a>
+                    <a class="button button-secondary" href="AzureOdev/Program.cs">Program.cs</a>
+                    <a class="button button-secondary" href="../index.html#haftalar">Ana sayfadaki haftalar</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <strong>Bu hafta ne var?</strong>
+                <p>ASP.NET Core uygulama başlangıcı, Razor Pages yapısı, ortak layout ve statik dosya düzeni.</p>
+            </div>
+        </section>
+
+        <section class="panel" aria-labelledby="ozet">
+            <h2 id="ozet">Kısa özet</h2>
+            <div class="info-grid">
+                <article class="card">
+                    <strong>Odak</strong>
+                    <p>Sunucu taraflı web uygulaması mantığı ve sayfa tabanlı yapı.</p>
+                </article>
+                <article class="card">
+                    <strong>İçerik</strong>
+                    <p>Proje dosyaları, sayfalar, wwwroot klasörü ve temel uygulama kurulumu.</p>
+                </article>
+                <article class="card">
+                    <strong>Geçiş</strong>
+                    <p>Ana sayfaya veya proje dosyalarına hızlı erişim için doğrudan bağlantılar.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel" aria-labelledby="kaynaklar">
+            <h2 id="kaynaklar">Projede bakılacak yerler</h2>
+            <div class="link-grid">
+                <a class="resource" href="AzureOdev/Pages/Index.cshtml">
+                    <strong>Pages/Index.cshtml</strong>
+                    <span>Ana sayfanın Razor sürümü.</span>
+                </a>
+                <a class="resource" href="AzureOdev/Pages/Shared/_Layout.cshtml">
+                    <strong>Shared/_Layout.cshtml</strong>
+                    <span>Ortak sayfa iskeleti ve tekrar eden alanlar.</span>
+                </a>
+                <a class="resource" href="AzureOdev/wwwroot/css/site.css">
+                    <strong>wwwroot/css/site.css</strong>
+                    <span>Statik stil dosyaları.</span>
+                </a>
+                <a class="resource" href="AzureOdev/Program.cs">
+                    <strong>Program.cs</strong>
+                    <span>Uygulamanın çalışma başlangıcı.</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div class="shell">
+        <footer class="footer-panel" id="iletisim">
+            <div>
+                <strong>Hafta 8 proje alanı</strong>
+                <p>Bu giriş sayfası, proje klasörüne düzenli bir tarayıcı başlangıcı sağlamak için eklendi.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Ana sayfa</a>
+                <a href="#ust">Yukarı dön</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

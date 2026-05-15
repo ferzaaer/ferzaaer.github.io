@@ -4,77 +4,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flexbox Odev</title>
+  <title>Hafta 4 | Flexbox Laboratuvarı</title>
+  <link rel="stylesheet" href="../lab-theme.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="lab-theme">
   <div class="wrapper">
     <main class="page">
-      <nav class="navbar section-box">
-        <div class="logo">LOGO</div>
+      <nav class="navbar section-box" aria-label="Hafta 4 menüsü">
+        <a class="logo" href="../index.html">WP FlexLab</a>
         <ul class="nav-links">
-          <li><a href="#">Ana Sayfa</a></li>
-          <li><a href="#">Hakkinda</a></li>
-          <li><a href="#">Dersler</a></li>
-          <li><a href="#">Iletisim</a></li>
-          <li><a href="../hafta7/index.html">← Laboratuvar Ana Sayfası</a></li>
+          <li><a href="#hero">Giriş</a></li>
+          <li><a href="#kartlar">Kartlar</a></li>
+          <li><a href="#grow">Flex Grow</a></li>
+          <li><a href="../index.html#haftalar">Ana Sayfa</a></li>
         </ul>
       </nav>
 
-      <section class="hero section-box">
+      <section class="hero section-box" id="hero">
         <div class="hero-left">
-          <h1>Hero Baslik</h1>
-          <p>Aciklama metni</p>
-          <div class="line"></div>
-          <button>Buton</button>
+          <span class="eyebrow">Hafta 4 Uygulaması</span>
+          <h1>Flexbox Sayfa Yerleşimi</h1>
+          <p>
+            Bu tek sayfalık çalışma; yatay ve dikey hizalama, yön değiştirme, esneme davranışı,
+            <strong>flex-wrap</strong> ve <strong>flex-grow</strong> kullanımını aynı arayüz üzerinde gösterir.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#kartlar">Kartlar</a>
+            <a class="secondary-button" href="#grow">Grow</a>
+          </div>
         </div>
-        <div class="hero-right">
-          <div class="placeholder">Gorsel Alani</div>
+
+        <div class="hero-right" aria-label="Flexbox görsel alanı">
+          <div class="placeholder">
+            <span class="axis x-axis">space-between</span>
+            <span class="axis y-axis">stretch</span>
+            <div class="mock mock-a"></div>
+            <div class="mock mock-b"></div>
+            <div class="mock mock-c"></div>
+          </div>
         </div>
       </section>
 
-      <section class="cards-section section-box">
-        <h2>Kartlar Bolumu</h2>
+      <section class="cards-section section-box" id="kartlar" aria-labelledby="cards-title">
+        <div class="section-heading">
+          <span class="eyebrow">Multiple Items</span>
+          <h2 id="cards-title">Flexbox Kartları</h2>
+        </div>
+
         <article class="card">
-          <h3>Kart Basligi</h3>
-          <p>Kisa aciklama</p>
-          <button>Buton</button>
+          <h3>display: flex</h3>
+          <p>Ana kapsayıcı esnek yerleşime geçer.</p>
         </article>
         <article class="card">
-          <h3>Kart Basligi</h3>
-          <p>Kisa aciklama</p>
-          <button>Buton</button>
+          <h3>flex-direction</h3>
+          <p>Satır ve kolon yönleri uygulanır.</p>
         </article>
         <article class="card">
-          <h3>Kart Basligi</h3>
-          <p>Kisa aciklama</p>
-          <button>Buton</button>
+          <h3>justify-content</h3>
+          <p>Öğeler eksen üzerinde dağıtılır.</p>
         </article>
         <article class="card">
-          <h3>Kart Basligi</h3>
-          <p>Kisa aciklama</p>
-          <button>Buton</button>
+          <h3>align-items</h3>
+          <p>Dikey hizalama ve stretch gösterilir.</p>
         </article>
         <article class="card">
-          <h3>Kart Basligi</h3>
-          <p>Kisa aciklama</p>
-          <button>Buton</button>
+          <h3>flex-wrap</h3>
+          <p>Kartlar gerektiğinde alt satıra geçer.</p>
         </article>
         <article class="card">
-          <h3>Kart Basligi</h3>
-          <p>Kisa aciklama</p>
-          <button>Buton</button>
+          <h3>vh / vw</h3>
+          <p>Alanlar ekran oranlarıyla ölçülür.</p>
         </article>
       </section>
 
-      <section class="grow-section section-box">
-        <div class="grow-box box-1">1 Kutu - flex-grow: 1</div>
-        <div class="grow-box box-2">2 Kutu - flex-grow: 2</div>
-        <div class="grow-box box-3">3 Kutu - flex-grow: 1</div>
+      <section class="grow-section section-box" id="grow" aria-label="Flex grow uygulaması">
+        <div class="grow-box box-1">
+          <strong>Kutu 1</strong>
+          <span>flex-grow: 1</span>
+        </div>
+        <div class="grow-box box-2">
+          <strong>Kutu 2</strong>
+          <span>flex-grow: 2</span>
+        </div>
+        <div class="grow-box box-3">
+          <strong>Kutu 3</strong>
+          <span>flex-grow: 1</span>
+        </div>
       </section>
 
-      <footer class="footer section-box">(c) 2026 - Temel Flexbox Ornegi</footer>
+      <footer class="footer section-box">
+        <span>Hafta 4 Flexbox Laboratuvarı | HTML + CSS</span>
+      </footer>
     </main>
   </div>
 </body>
