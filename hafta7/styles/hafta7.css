@@ -1,259 +1,178 @@
-/* Hafta 7 - Bootstrap ile Başvuru Sistemi Custom CSS */
-
-/* Tema Değişkenler */
 :root {
-    --primary-color: #e63384;
-    --secondary-color: #f8bbd0;
-    --danger-color: #dc3545;
-    --success-color: #198754;
-    --dark-bg: #1a1a1a;
-    --dark-text: #f0f0f0;
+    --page-bg: #ffffff;
+    --page-text: #0f172a;
+    --page-muted: #475569;
+    --page-border: rgba(37, 99, 235, 0.13);
+    --page-soft: #f8fbff;
+    --page-primary: #2563eb;
+    --page-primary-strong: #1d4ed8;
 }
 
-/* Light Mode (Default) */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: #ffffff;
-    color: #333;
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
-}
-
-body.dark-mode .navbar {
-    background-color: #0a0a0a !important;
-}
-
-body.dark-mode .bg-light {
-    background-color: #2a2a2a !important;
-}
-
-body.dark-mode .card {
-    background-color: #2a2a2a;
-    color: var(--dark-text);
-    border-color: #444 !important;
-}
-
-body.dark-mode .form-control,
-body.dark-mode .form-select {
-    background-color: #333;
-    color: var(--dark-text);
-    border-color: #555;
-}
-
-body.dark-mode .form-control:focus,
-body.dark-mode .form-select:focus {
-    background-color: #333;
-    color: var(--dark-text);
-    border-color: var(--primary-color);
-}
-
-body.dark-mode .form-check-label {
-    color: var(--dark-text);
-}
-
-body.dark-mode .form-check-input {
-    background-color: #333;
-    border-color: #555;
-}
-
-body.dark-mode .form-check-input:checked {
-    background-color: #e63384;
-    border-color: #e63384;
-}
-
-body.dark-mode .alert-info {
-    background-color: rgba(230, 51, 132, 0.2);
-    border-color: #e63384;
-    color: var(--dark-text);
-}
-
-body.dark-mode hr {
-    border-color: #555;
-}
-
-body.dark-mode .text-muted {
-    color: #aaa !important;
-}
-
-/* Card Hover Effect */
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
-body.dark-mode .card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Form Styling */
-.form-control,
-.form-select {
-    border-radius: 0.5rem;
-    border: 1px solid #dee2e6;
-    transition: border-color 0.3s ease;
-}
-
-.form-control:focus,
-.form-select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(230, 51, 132, 0.25);
-}
-
-.invalid-feedback {
-    color: var(--danger-color);
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: none;
-}
-
-.form-control.is-invalid,
-.form-select.is-invalid {
-    border-color: var(--danger-color);
-}
-
-.form-control.is-invalid:focus,
-.form-select.is-invalid:focus {
-    border-color: var(--danger-color);
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
-
-.is-invalid~.invalid-feedback {
-    display: block;
-}
-
-/* Checkbox Styling */
-.form-check-input {
-    border-radius: 0.3rem;
-    transition: all 0.2s ease;
-}
-
-.form-check-input:checked {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-/* Button Styling */
-.btn {
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.btn-primary:hover {
-    background-color: #c2185b;
-    border-color: #c2185b;
-    transform: translateY(-2px);
-    box-shadow: 0 0.5rem 1rem rgba(230, 51, 132, 0.4);
-}
-
-/* Alert */
-.alert {
-    border-radius: 0.5rem;
-    animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Result Section */
-#resultSection.show {
-    animation: slideIn 0.3s ease;
-}
-
-/* Navbar Animation */
-.navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Theme Toggle Button */
-#themeToggle {
-    transition: all 0.3s ease;
-}
-
-#themeToggle:hover {
-    transform: scale(1.1);
-}
-
-/* Responsive Text */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 4rem 0;
-    }
-
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-
-    .feature-icon {
-        font-size: 2rem;
-    }
-}
-
-/* Print Styles */
-@media print {
-
-    .navbar,
-    .hero-section,
-    #registrationForm,
-    footer {
-        display: none;
-    }
-
-    .card {
-        page-break-inside: avoid;
-    }
-}
-
-/* Smooth Scroll */
 html {
     scroll-behavior: smooth;
 }
 
-/* Input Placeholder */
-.form-control::placeholder,
-.form-select::placeholder {
-    color: #6c757d;
-    opacity: 0.7;
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.09), transparent 28%),
+        var(--page-bg);
+    color: var(--page-text);
+    font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
 }
 
-body.dark-mode .form-control::placeholder,
-body.dark-mode .form-select::placeholder {
-    color: #999;
+.navbar {
+    background: linear-gradient(90deg, var(--page-primary-strong), var(--page-primary));
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
-/* Transition Classes */
-.fade-in {
-    animation: fadeInAnimation 0.5s ease;
+.hero-section {
+    padding: clamp(4rem, 7vw, 6rem) 0;
 }
 
-@keyframes fadeInAnimation {
-    from {
-        opacity: 0;
-    }
+.hero-card,
+.card,
+.info-tile {
+    border: 1px solid var(--page-border);
+    border-radius: 1.25rem;
+}
 
-    to {
-        opacity: 1;
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-box,
+.info-tile {
+    height: 100%;
+    padding: 1rem;
+    background: var(--page-soft);
+}
+
+.stat-box strong,
+.info-tile strong {
+    display: block;
+    color: var(--page-primary-strong);
+    margin-bottom: 0.35rem;
+}
+
+.stat-box span,
+.info-tile span {
+    display: block;
+    color: var(--page-muted);
+    line-height: 1.55;
+}
+
+.section-kicker {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    color: var(--page-primary-strong);
+    font-weight: 800;
+}
+
+.section-soft {
+    background: rgba(248, 251, 255, 0.86);
+    border-block: 1px solid var(--page-border);
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    border-color: rgba(37, 99, 235, 0.18);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: var(--page-primary);
+    box-shadow: 0 0 0 0.22rem rgba(37, 99, 235, 0.16);
+}
+
+.btn {
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background: var(--page-primary);
+    border-color: var(--page-primary);
+}
+
+.btn-primary:hover {
+    background: var(--page-primary-strong);
+    border-color: var(--page-primary-strong);
+}
+
+.btn-outline-primary {
+    color: var(--page-primary-strong);
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+.btn-outline-primary:hover {
+    background: var(--page-primary);
+    border-color: var(--page-primary);
+}
+
+.result-card {
+    position: sticky;
+    top: 6rem;
+}
+
+.footer-section {
+    background: linear-gradient(180deg, var(--page-primary-strong), #0f172a);
+    color: #ffffff;
+}
+
+.footer-section p,
+.footer-link {
+    color: rgba(248, 250, 252, 0.82);
+}
+
+.footer-link:hover {
+    color: #ffffff;
+}
+
+body.dark-mode {
+    --page-bg: #0f172a;
+    --page-text: #f8fafc;
+    --page-muted: #cbd5e1;
+    --page-border: rgba(147, 197, 253, 0.18);
+    --page-soft: #172033;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.22), transparent 30%),
+        var(--page-bg);
+}
+
+body.dark-mode .card,
+body.dark-mode .list-group-item,
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode .form-check-input,
+body.dark-mode .alert {
+    background-color: #111827;
+    color: var(--page-text);
+    border-color: var(--page-border);
+}
+
+body.dark-mode .text-secondary,
+body.dark-mode .text-muted {
+    color: var(--page-muted) !important;
+}
+
+body.dark-mode .section-soft {
+    background: #111827;
+}
+
+body.dark-mode .alert-info {
+    background-color: rgba(37, 99, 235, 0.18);
+    color: var(--page-text);
+}
+
+@media (max-width: 991.98px) {
+    .result-card {
+        position: static;
     }
 }

@@ -5,166 +5,558 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Programlama Laboratuvarları</title>
-    <meta http-equiv="refresh" content="0; url=hafta7/index.html">
+    <link rel="stylesheet" href="lab-theme.css">
     <style>
-        :root {
-            color-scheme: light;
-            --bg: #f5f7fb;
-            --card: #ffffff;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --accent: #2563eb;
-            --accent-strong: #1d4ed8;
-            --border: #dbe3f0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: linear-gradient(135deg, #eef4ff 0%, #f8fafc 50%, #eefbf5 100%);
-            color: var(--text);
-            min-height: 100vh;
+        .home-shell {
             display: grid;
-            place-items: center;
-            padding: 24px;
+            gap: 1rem;
         }
 
-        .card {
-            width: min(720px, 100%);
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-        }
-
-        .eyebrow {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--accent-strong);
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        h1 {
-            margin: 0 0 12px;
-            font-size: clamp(2rem, 5vw, 3rem);
-            line-height: 1.1;
-        }
-
-        p {
-            margin: 0 0 24px;
-            color: var(--muted);
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-        .actions {
+        .topbar {
+            position: sticky;
+            top: 1rem;
+            z-index: 20;
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
-
-        .button {
-            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            padding: 0 18px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
         }
 
-        .button:hover {
-            transform: translateY(-1px);
-        }
-
-        .button-primary {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
-        }
-
-        .button-primary:hover {
-            background: var(--accent-strong);
-        }
-
-        .button-secondary {
-            background: #eef2ff;
-            color: var(--accent-strong);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
-        }
-
-        .link-card {
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 18px;
-            background: #fbfdff;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
             text-decoration: none;
             color: inherit;
         }
 
-        .link-card strong {
+        .brand-mark {
+            width: 3rem;
+            height: 3rem;
+            display: grid;
+            place-items: center;
+            border-radius: 999px;
+            color: #ffffff;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb, #60a5fa);
+            box-shadow: 0 14px 24px rgba(37, 99, 235, 0.22);
+        }
+
+        .brand-copy strong {
             display: block;
-            margin-bottom: 6px;
-            color: var(--accent-strong);
+            font-size: 1.05rem;
+            color: #0f172a;
         }
 
-        .link-card span {
-            color: var(--muted);
+        .brand-copy span {
+            color: #475569;
             font-size: 0.95rem;
         }
 
-        .footer {
-            margin-top: 24px;
-            color: var(--muted);
-            font-size: 0.95rem;
+        .quick-nav {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .quick-nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.7rem;
+            padding: 0.55rem 0.95rem;
+            border-radius: 999px;
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            background: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+            gap: 1rem;
+            padding: clamp(1.2rem, 3vw, 2rem);
+        }
+
+        .hero h1 {
+            margin: 1rem 0 0.9rem;
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-lead {
+            max-width: 62ch;
+            margin: 0;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.45rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            background: rgba(255, 255, 255, 0.84);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .lab-focus {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(37, 99, 235, 0.09);
+        }
+
+        .lab-focus h2 {
+            margin: 0;
+            font-size: 1.15rem;
+        }
+
+        .lab-focus-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.7rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .lab-focus-list li {
+            padding: 0.8rem;
+            border-radius: 16px;
+            background: rgba(248, 250, 252, 0.92);
+            border: 1px solid rgba(37, 99, 235, 0.08);
+        }
+
+        .lab-focus-list strong {
+            display: block;
+            color: #1d4ed8;
+            margin-bottom: 0.25rem;
+        }
+
+        .lab-focus-list span {
+            display: block;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .hero-aside {
+            display: grid;
+            gap: 1rem;
+            align-content: start;
+        }
+
+        .profile-card,
+        .course-card,
+        .section-card,
+        .week-card {
+            border-radius: 24px;
+            border: 1px solid rgba(37, 99, 235, 0.09);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+            padding: 1.2rem;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .section-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 0.9fr 1.6fr;
+            gap: 1rem;
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(37, 99, 235, 0.08);
+        }
+
+        .timeline-item strong {
+            color: #1d4ed8;
+        }
+
+        .timeline-item p {
+            margin: 0;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tags span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.35rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            color: #1d4ed8;
+            font-weight: 700;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .project-item {
+            padding: 1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(37, 99, 235, 0.08);
+        }
+
+        .project-item strong {
+            display: block;
+            color: #1d4ed8;
+            margin-bottom: 0.45rem;
+        }
+
+        .project-item p {
+            margin: 0;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+        }
+
+        .week-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .week-card strong {
+            display: block;
+            color: #1d4ed8;
+            font-size: 1.02rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-card span {
+            display: block;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .footer-banner {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 1.2rem 1.4rem;
+            border-radius: 24px;
+            background: linear-gradient(180deg, #1d4ed8, #0f172a);
+            color: #ffffff;
+        }
+
+        .footer-banner p {
+            color: rgba(248, 250, 252, 0.82);
+        }
+
+        .footer-banner a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.55rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .lab-focus-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            .topbar,
+            .footer-banner {
+                padding: 1rem;
+            }
+
+            .quick-nav {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
-<body>
-    <main class="card">
-        <div class="eyebrow">Web Programlama Dersi</div>
-        <h1>Laboratuvar Ana Sayfası</h1>
-        <p>GitHub Pages üzerinde yayınlanan haftalara buradan erişebilirsin. Hafta 7 uygulaması hazır olduğunda doğrudan
-            onun sayfasına geçiş yapar.</p>
+<body class="lab-theme home-page">
+    <header class="topbar">
+        <a class="brand" href="#anasayfa">
+            <span class="brand-mark">WP</span>
+            <span class="brand-copy">
+                <strong>Ferza Er | Web Programlama Laboratuvarları</strong>
+                <span>Bilgisayar mühendisliği, yapay zeka ve web çalışmaları</span>
+            </span>
+        </a>
+        <nav class="quick-nav" aria-label="Hızlı menü">
+            <a href="#hakkimda">Hakkımda</a>
+            <a href="#ders">Deneyim</a>
+            <a href="#haftalar">Haftalar</a>
+            <a href="#iletisim">İletişim</a>
+        </nav>
+    </header>
 
-        <div class="actions">
-            <a class="button button-primary" href="hafta7/index.html">Hafta 7 Uygulamasına Git</a>
-            <a class="button button-secondary" href="hafta1/index.html">Hafta 1</a>
-            <a class="button button-secondary" href="hafta6/uygulama1.html">Hafta 6</a>
-        </div>
+    <main class="home-shell">
+        <section class="panel hero" id="anasayfa" aria-labelledby="hero-title">
+            <div>
+                <span class="eyebrow">Bilgisayar mühendisliği öğrencisi · Marmara Üniversitesi</span>
+                <h1 id="hero-title">Web Programlama Laboratuvar Çalışmaları</h1>
+                <p class="hero-lead">Yapay zeka, görüntü işleme, veri analizi, gömülü sistemler ve web teknolojileri
+                    üzerine çalışan bir bilgisayar mühendisliği öğrencisiyim. Bu sayfada hem Web Programlama dersi için
+                    hazırladığım haftalık uygulamalar hem de CV'mdeki teknik yönüm, projelerim ve iletişim bilgilerim
+                    yer alıyor.</p>
 
-        <section class="grid" aria-label="Hafta bağlantıları">
-            <a class="link-card" href="hafta1/index.html"><strong>Hafta 1</strong><span>Temel HTML sayfaları</span></a>
-            <a class="link-card" href="hafta2/index.html"><strong>Hafta 2</strong><span>HTML + CSS</span></a>
-            <a class="link-card" href="hafta3/index.html"><strong>Hafta 3</strong><span>Form yapıları</span></a>
-            <a class="link-card" href="hafta4/index.html"><strong>Hafta 4</strong><span>Flexbox</span></a>
-            <a class="link-card" href="hafta5/index.html"><strong>Hafta 5</strong><span>Position örnekleri</span></a>
-            <a class="link-card" href="hafta6/uygulama1.html"><strong>Hafta 6</strong><span>JavaScript
-                    uygulamaları</span></a>
-            <a class="link-card" href="hafta7/index.html"><strong>Hafta 7</strong><span>Hafta menüsü</span></a>
-            <a class="link-card" href="hafta7/hafta7.html"><strong>Hafta 7 Uygulama</strong><span>Bootstrap +
-                    JavaScript</span></a>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#haftalar">Haftalara git</a>
+                    <a class="button button-secondary" href="hafta7/hafta7.html">Hafta 7 Uygulamasına Git</a>
+                    <a class="button button-secondary" href="#projeler">Projeler</a>
+                    <a class="button button-secondary" href="#iletisim">İletişim</a>
+                </div>
+
+                <section class="lab-focus" aria-labelledby="lab-focus-title">
+                    <h2 id="lab-focus-title">Laboratuvar Kapsamı</h2>
+                    <ul class="lab-focus-list">
+                        <li>
+                            <strong>Sayfa Geliştirme</strong>
+                            <span>HTML iskeleti, CSS düzeni, kart yapıları ve çoklu sayfa bağlantıları.</span>
+                        </li>
+                        <li>
+                            <strong>Arayüz Düzeni</strong>
+                            <span>Flexbox, konumlandırma, responsive görünüm ve ortak tema kullanımı.</span>
+                        </li>
+                        <li>
+                            <strong>JavaScript Uygulamaları</strong>
+                            <span>Formlar, temel etkileşimler ve haftalık örnek uygulama sayfaları.</span>
+                        </li>
+                        <li>
+                            <strong>.NET Projesi</strong>
+                            <span>Hafta 8'de ASP.NET Core yapısı ve Razor Pages başlangıç projesi.</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <aside class="hero-aside">
+                <article class="profile-card">
+                    <h2 class="section-title">Ferza Er</h2>
+                    <p>Bilgisayar mühendisliği öğrencisiyim. Yapay zeka, görüntü işleme, veri analizi ve gömülü
+                        sistemler alanlarında kendimi geliştiriyorum.</p>
+                    <ul>
+                        <li>Marmara Üniversitesi Bilgisayar Mühendisliği öğrencisiyim.</li>
+                        <li>CNN tabanlı model geliştirme, Linux sistemleri ve temel ağ teknolojileri üzerine
+                            çalışıyorum.</li>
+                        <li>Teknik öğrenmeye açık, araştırmayı seven ve ekip çalışmasına uyum sağlayan bir mühendis
+                            adayıyım.</li>
+                    </ul>
+                    <div class="contact-links" aria-label="Profil bağlantıları">
+                        <a href="mailto:ferzaer463@gmail.com">E-posta</a>
+                        <a href="https://linkedin.com/in/ferza-er">LinkedIn</a>
+                        <a href="https://github.com/Erferza">GitHub</a>
+                    </div>
+                </article>
+                <article class="course-card">
+                    <h2 class="section-title">İletişim ve Eğitim</h2>
+                    <p><strong>E-posta:</strong> ferzaer463@gmail.com<br><strong>Telefon:</strong> +90 541 117 9887</p>
+                    <ul>
+                        <li>Marmara Üniversitesi Bilgisayar Mühendisliği, 2023 - 2027.</li>
+                        <li>Nusaybin Kız Anadolu İmam Hatip Lisesi, 2017 - 2021.</li>
+                        <li>LinkedIn: linkedin.com/in/ferza-er</li>
+                        <li>GitHub: github.com/Erferza</li>
+                    </ul>
+                </article>
+            </aside>
         </section>
 
-        <div class="footer">GitHub Pages ana adresi bu dosyayı açar; ardından ilgili haftaya geçebilirsin.</div>
+        <section class="panel section-card" id="hakkimda" aria-labelledby="about-title">
+            <div class="section-toolbar">
+                <h2 class="section-title" id="about-title">Hakkımda</h2>
+                <a href="#anasayfa">Yukarı çık</a>
+            </div>
+            <p>Bilgisayar mühendisliği öğrencisi olarak yapay zeka, görüntü işleme, veri analizi ve gömülü sistemler
+                üzerinde çalışıyorum. CNN tabanlı modeller, Linux sistemleri, temel ağ teknolojileri ve mikrokontroller
+                tabanlı uygulamalar başlıca ilgi alanlarım arasında. Teknik öğrenmeye açık, araştırmayı seven ve ekip
+                çalışmalarında uyum sağlayabilen bir mühendis adayıyım.</p>
+            <div class="skill-tags" aria-label="Teknik beceriler">
+                <span>Python</span>
+                <span>Java</span>
+                <span>C</span>
+                <span>SQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Linux</span>
+                <span>Firewall</span>
+                <span>VLAN</span>
+                <span>ESP8266</span>
+                <span>Power BI</span>
+            </div>
+        </section>
+
+        <section class="panel section-card" id="ders" aria-labelledby="course-title">
+            <div class="section-toolbar">
+                <h2 class="section-title" id="course-title">Deneyim ve Odak Alanları</h2>
+                <a href="#anasayfa">Ana sayfa</a>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>TEKNOFEST Takım Danışmanı</strong>
+                    <p>T3 Vakfı bünyesinde takım organizasyonu ve teknik yönlendirme süreçlerinde görev alıyorum.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>Gönüllü Eğitmen</strong>
+                    <p>Ortaokul öğrencilerine teknoloji, algoritma ve yapay zeka eğitimleri veriyorum.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>Network Departmanı Stajyeri</strong>
+                    <p>Kurumsal ağlarda VLAN, segmentasyon, Fortigate firewall, erişim kuralları ve temel ağ güvenliği
+                        süreçleri üzerine çalıştım.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel section-card" id="haftalar" aria-labelledby="weeks-title">
+            <div class="section-toolbar">
+                <h2 class="section-title" id="weeks-title">Haftalar</h2>
+                <a href="#anasayfa">Başa dön</a>
+            </div>
+            <div class="week-grid">
+                <a class="week-card" href="hafta1/index.html"><strong>Hafta 1</strong><span>Temel giriş sayfası ve ilk
+                        içerikler.</span></a>
+                <a class="week-card" href="hafta2/index.html"><strong>Hafta 2</strong><span>CSS düzeni ve sayfa
+                        yapısı.</span></a>
+                <a class="week-card" href="hafta3/index.html"><strong>Hafta 3</strong><span>Çoklu sayfa ve kişisel
+                        içerik düzeni.</span></a>
+                <a class="week-card" href="hafta4/index.html"><strong>Hafta 4</strong><span>Stil denemeleri ve arayüz
+                        iyileştirmeleri.</span></a>
+                <a class="week-card" href="hafta5/index.html"><strong>Hafta 5</strong><span>Konumlandırma ve kart
+                        yapıları.</span></a>
+                <a class="week-card" href="hafta6/uygulama1.html"><strong>Hafta 6</strong><span>Script örnekleri ve
+                        uygulamalar.</span></a>
+                <a class="week-card" href="hafta7/hafta7.html"><strong>Hafta 7</strong><span>Modern haftalık sayfa ve
+                        kaynak yapısı.</span></a>
+                <a class="week-card" href="hafta8/index.html"><strong>Hafta 8</strong><span>ASP.NET Core proje
+                        başlangıcı.</span></a>
+            </div>
+        </section>
+
+        <section class="panel section-card" id="projeler" aria-labelledby="projects-title">
+            <div class="section-toolbar">
+                <h2 class="section-title" id="projects-title">Projeler ve Yarışmalar</h2>
+                <a href="#iletisim">İletişim</a>
+            </div>
+            <div class="project-grid">
+                <div class="project-item">
+                    <strong>Ses Steganografisinde Payload Tespiti</strong>
+                    <p>CNN tabanlı modellerle ses dosyalarında steganografi tespiti, veri seti hazırlama, model eğitimi
+                        ve performans analizi üzerine çalıştım.</p>
+                </div>
+                <div class="project-item">
+                    <strong>Otonom Araçlarda Anomali Tespiti</strong>
+                    <p>LSTM, XGBoost ve YOLOv8 tabanlı modellerle CARLA simülasyon ortamında güvenli mod yaklaşımı ve
+                        risk azaltma senaryoları geliştirdim.</p>
+                </div>
+                <div class="project-item">
+                    <strong>Yapay Zeka Destekli Lojistik Ana Hat Optimizasyonu</strong>
+                    <p>TEKNOFEST için maliyet ve zaman optimizasyonu odaklı veri analizi ve ön değerlendirme raporu
+                        hazırladım.</p>
+                </div>
+                <div class="project-item">
+                    <strong>Wi-Fi Kontrollü Uçak</strong>
+                    <p>ESP8266 ve MPU6050 sensörleriyle kablosuz kontrollü mini uçak sistemi geliştirdim.</p>
+                </div>
+                <div class="project-item">
+                    <strong>Log Analiz ve Brute-Force Tespit Aracı</strong>
+                    <p>Linux sistem loglarını bash scriptleriyle analiz ederek başarısız giriş denemelerini otomatik
+                        tespit eden bir araç geliştirdim.</p>
+                </div>
+                <div class="project-item">
+                    <strong>Otel Rezervasyon Sistemi</strong>
+                    <p>MSSQL ve PHP kullanarak rezervasyon, müşteri yönetimi ve kullanıcı arayüzü süreçleri üzerine
+                        çalıştım.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-banner" id="iletisim">
+            <div>
+                <strong>Ferza Er</strong>
+                <p>Bilgisayar Mühendisliği öğrencisi. Bu ana sayfa GitHub Pages için düzenlendi; menüden haftalar
+                    arasında geçiş yapabilirsin.</p>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:ferzaer463@gmail.com">Mail</a>
+                <a href="https://linkedin.com/in/ferza-er">LinkedIn</a>
+                <a href="https://github.com/Erferza">GitHub</a>
+                <a href="#anasayfa">Başa dön</a>
+            </div>
+        </footer>
     </main>
 </body>
 

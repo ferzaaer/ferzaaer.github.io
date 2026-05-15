@@ -1,0 +1,112 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hafta 8";
+}
+
+<section class="hero-card">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <span class="eyebrow">Hafta 8 | ASP.NET Core Razor Pages</span>
+            <h1 class="display-4 fw-bold mt-3 mb-3">.NET ile Temel Web Uygulaması</h1>
+            <p class="lead mb-4">
+                Bu sayfa Web Programlama ana sayfasıyla uyumlu olacak şekilde hazırlanmış basit bir ASP.NET Core
+                Razor Pages örneğidir. Amaç; .NET proje yapısını, Razor sayfa mantığını, layout kullanımını ve statik
+                dosya düzenini tek ekranda göstermektir.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-primary btn-lg" href="#dotnet-yapilari">.NET Yapılarını Gör</a>
+                <a class="btn btn-outline-primary btn-lg" href="#proje-akisi">Proje Akışı</a>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="info-panel">
+                <h2 class="h4 fw-bold mb-3">Proje Özeti</h2>
+                <ul class="list-unstyled mb-0 info-list">
+                    <li><strong>Framework:</strong> ASP.NET Core 8.0</li>
+                    <li><strong>Sayfa Yapısı:</strong> Razor Pages</li>
+                    <li><strong>Giriş Dosyası:</strong> Program.cs</li>
+                    <li><strong>Stil Dosyası:</strong> wwwroot/css/site.css</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-card mt-4" id="dotnet-yapilari">
+    <div class="section-heading">
+        <span class="eyebrow">Temel .NET Yapıları</span>
+        <h2 class="fw-bold mb-0">Bu Projede Neler Var?</h2>
+    </div>
+
+    <div class="row g-4 mt-1">
+        <div class="col-md-6 col-xl-3">
+            <article class="detail-card h-100">
+                <h3 class="h5">Program.cs</h3>
+                <p>Uygulama servislerinin eklendiği, middleware sırasının kurulduğu ve Razor Pages yönlendirmesinin
+                    yapıldığı başlangıç dosyası.</p>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <article class="detail-card h-100">
+                <h3 class="h5">Razor Pages</h3>
+                <p><code>.cshtml</code> dosyaları HTML arayüzünü, <code>.cshtml.cs</code> dosyaları ise sayfa modelini
+                    ve sunucu tarafı davranışını taşır.</p>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <article class="detail-card h-100">
+                <h3 class="h5">Layout</h3>
+                <p><code>_Layout.cshtml</code> ortak navbar, içerik alanı ve footer yapısını tutar; sayfalar aynı
+                    iskeleti paylaşır.</p>
+            </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <article class="detail-card h-100">
+                <h3 class="h5">wwwroot</h3>
+                <p>CSS, JavaScript, görsel ve Bootstrap gibi statik dosyaların web üzerinden sunulduğu klasördür.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4 mt-1" id="proje-akisi">
+    <div class="col-lg-7">
+        <div class="content-card h-100">
+            <span class="eyebrow">Çalışma Akışı</span>
+            <h2 class="fw-bold mt-2 mb-3">ASP.NET Core Sayfa Mantığı</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>1. İstek gelir</strong>
+                    <p>Kullanıcı tarayıcıdan ana sayfaya girdiğinde ASP.NET Core routing sistemi ilgili Razor Page'i
+                        bulur.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>2. PageModel çalışır</strong>
+                    <p><code>Index.cshtml.cs</code> içindeki <code>OnGet()</code> metodu sayfa açılırken çalışabilecek
+                        sunucu tarafı kodlar için kullanılır.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>3. Razor çıktı üretir</strong>
+                    <p><code>Index.cshtml</code>, layout ile birleşerek tarayıcıya gönderilecek HTML sayfasını oluşturur.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="content-card h-100">
+            <span class="eyebrow">Öğrenci Bilgileri</span>
+            <h2 class="h4 fw-bold mt-2 mb-3">Ferza Er</h2>
+            <ul class="list-unstyled info-list mb-4">
+                <li><strong>Bölüm:</strong> Bilgisayar Mühendisliği</li>
+                <li><strong>Ders:</strong> Web Programlama</li>
+                <li><strong>Konu:</strong> ASP.NET Core başlangıç yapısı</li>
+            </ul>
+            <div class="note-box">
+                <strong>Not</strong>
+                <span>Bu sayfa temel .NET yapılarını göstermek için sade tutuldu; ana sayfadaki görsel tema ile aynı
+                    mavi, beyaz ve yumuşak kart yapısı kullanıldı.</span>
+            </div>
+        </div>
+    </div>
+</section>

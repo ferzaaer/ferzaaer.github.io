@@ -1,220 +1,126 @@
-// Hafta 7 - Bootstrap ile Başvuru Sistemi JavaScript
+const themeToggle = document.getElementById("themeToggle");
+const registrationForm = document.getElementById("registrationForm");
+const formAlert = document.getElementById("formAlert");
+const emptyResult = document.getElementById("emptyResult");
+const resultSummary = document.getElementById("resultSummary");
+const newRegistration = document.getElementById("newRegistration");
 
-// ============================================
-// 1. TEMA DEĞİŞTİRME FUNCTIONALITY
-// ============================================
+const fields = {
+    fullName: document.getElementById("fullName"),
+    email: document.getElementById("email"),
+    department: document.getElementById("department"),
+    classLevel: document.getElementById("classLevel"),
+    workshop: document.getElementById("workshop"),
+    participation: document.getElementById("participation"),
+    notes: document.getElementById("notes"),
+    terms: document.getElementById("terms")
+};
 
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
+const resultFields = {
+    fullName: document.getElementById("resultName"),
+    email: document.getElementById("resultEmail"),
+    department: document.getElementById("resultDepartment"),
+    classLevel: document.getElementById("resultClass"),
+    workshop: document.getElementById("resultWorkshop"),
+    participation: document.getElementById("resultParticipation"),
+    notes: document.getElementById("resultNotes")
+};
 
-// Sayfayı yüklerken tema tercihini kontrol et
-document.addEventListener('DOMContentLoaded', function () {
-    // Local storage'dan tema tercihini oku
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        themeToggle.textContent = '☀️ Tema';
-    }
+function setTheme(mode) {
+    document.body.classList.toggle("dark-mode", mode === "dark");
+    themeToggle.textContent = mode === "dark" ? "Açık Tema" : "Koyu Tema";
+    localStorage.setItem("hafta7-theme", mode);
+}
 
-    // Tema değiştirme butonu
-    themeToggle.addEventListener('click', function () {
-        body.classList.toggle('dark-mode');
+function isEmailValid(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
 
-        // Tema tercihini kaydet
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            themeToggle.textContent = '☀️ Tema';
-        } else {
-            localStorage.setItem('theme', 'light');
-            themeToggle.textContent = '🌙 Tema';
-        }
-    });
-});
+function setInvalid(field, invalid) {
+    field.classList.toggle("is-invalid", invalid);
+}
 
-// ============================================
-// 2. FORM DOĞRULAMA VE GÖNDERİMİ
-// ============================================
-
-const registrationForm = document.getElementById('registrationForm');
-const resultSection = document.getElementById('resultSection');
-const newRegistrationBtn = document.getElementById('newRegistration');
-
-// Form submit event listener
-registrationForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Sayfayı yenilememeyi sağla
-
-    // Form doğrulaması
-    if (!validateForm()) {
-        return;
-    }
-
-    // Başarılı ise özeti göster
-    showResultSummary();
-});
-
-// Form doğrulama fonksiyonu
 function validateForm() {
     let isValid = true;
 
-    // Temel alanları kontrol et
-    const fullName = document.getElementById('fullName');
-    const email = document.getElementById('email');
-    const department = document.getElementById('department');
-    const classSelect = document.getElementById('class');
-    const prerequisite = document.getElementById('prerequisite');
-    const participation = document.getElementById('participation');
-    const terms = document.getElementById('terms');
+    const requiredTextFields = [
+        fields.fullName,
+        fields.department,
+        fields.classLevel,
+        fields.workshop,
+        fields.participation
+    ];
 
-    // Ad Soyadı
-    if (!fullName.value.trim()) {
-        fullName.classList.add('is-invalid');
+    requiredTextFields.forEach((field) => {
+        const invalid = !field.value.trim();
+        setInvalid(field, invalid);
+        if (invalid) {
+            isValid = false;
+        }
+    });
+
+    const emailInvalid = !fields.email.value.trim() || !isEmailValid(fields.email.value.trim());
+    setInvalid(fields.email, emailInvalid);
+    if (emailInvalid) {
         isValid = false;
-    } else {
-        fullName.classList.remove('is-invalid');
     }
 
-    // E-posta
-    if (!email.value.trim() || !isValidEmail(email.value)) {
-        email.classList.add('is-invalid');
+    setInvalid(fields.terms, !fields.terms.checked);
+    if (!fields.terms.checked) {
         isValid = false;
-    } else {
-        email.classList.remove('is-invalid');
     }
 
-    // Bölüm
-    if (!department.value.trim()) {
-        department.classList.add('is-invalid');
-        isValid = false;
-    } else {
-        department.classList.remove('is-invalid');
-    }
-
-    // Sınıf
-    if (!classSelect.value) {
-        classSelect.classList.add('is-invalid');
-        isValid = false;
-    } else {
-        classSelect.classList.remove('is-invalid');
-    }
-
-    // Ön Koşul
-    if (!prerequisite.value) {
-        prerequisite.classList.add('is-invalid');
-        isValid = false;
-    } else {
-        prerequisite.classList.remove('is-invalid');
-    }
-
-    // Katılım Türü
-    if (!participation.value) {
-        participation.classList.add('is-invalid');
-        isValid = false;
-    } else {
-        participation.classList.remove('is-invalid');
-    }
-
-    // Şartları Kabul Et
-    if (!terms.checked) {
-        terms.classList.add('is-invalid');
-        isValid = false;
-    } else {
-        terms.classList.remove('is-invalid');
-    }
-
+    formAlert.classList.toggle("d-none", isValid);
     return isValid;
 }
 
-// E-posta doğrulama fonksiyonu
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+function createSummary() {
+    resultFields.fullName.textContent = fields.fullName.value.trim();
+    resultFields.email.textContent = fields.email.value.trim();
+    resultFields.department.textContent = fields.department.value.trim();
+    resultFields.classLevel.textContent = fields.classLevel.value;
+    resultFields.workshop.textContent = fields.workshop.value;
+    resultFields.participation.textContent = fields.participation.value;
+    resultFields.notes.textContent = fields.notes.value.trim() || "Not eklenmedi";
+
+    emptyResult.classList.add("d-none");
+    resultSummary.classList.remove("d-none");
+    resultSummary.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-// ============================================
-// 3. BAŞVURU ÖZETI OLUŞTURMA
-// ============================================
-
-function showResultSummary() {
-    // Form verilerini topla
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const department = document.getElementById('department').value;
-    const classSelect = document.getElementById('class').value;
-    const prerequisite = document.getElementById('prerequisite').value;
-    const participation = document.getElementById('participation').value;
-    const notes = document.getElementById('notes').value || 'Belirtilmedi';
-
-    // Sonuç alanını güncelle
-    document.getElementById('resultName').textContent = fullName;
-    document.getElementById('resultEmail').textContent = email;
-    document.getElementById('resultDepartment').textContent = department;
-    document.getElementById('resultClass').textContent = classSelect;
-    document.getElementById('resultPrerequisite').textContent = prerequisite;
-    document.getElementById('resultParticipation').textContent = participation;
-    document.getElementById('resultNotes').textContent = notes;
-
-    // Formu gizle ve sonuç bölümünü göster
-    registrationForm.style.display = 'none';
-    resultSection.style.display = 'block';
-    resultSection.classList.add('show');
-
-    // Sonuç bölümüne scroll yap
-    resultSection.scrollIntoView({ behavior: 'smooth' });
+function clearValidation() {
+    Object.values(fields).forEach((field) => field.classList.remove("is-invalid"));
+    formAlert.classList.add("d-none");
 }
 
-// ============================================
-// 4. YENİ BAŞVURU YAPMA
-// ============================================
-
-newRegistrationBtn.addEventListener('click', function () {
-    // Formu temizle
-    registrationForm.reset();
-
-    // Tüm input alanlarından is-invalid sınıfını kaldır
-    const inputs = registrationForm.querySelectorAll('.is-invalid');
-    inputs.forEach(input => input.classList.remove('is-invalid'));
-
-    // Hata mesajlarını gizle
-    const invalidFeedbacks = registrationForm.querySelectorAll('.invalid-feedback');
-    invalidFeedbacks.forEach(feedback => feedback.style.display = 'none');
-
-    // Formu göster ve sonuç bölümünü gizle
-    registrationForm.style.display = 'block';
-    resultSection.style.display = 'none';
-
-    // Forma scroll yap
-    registrationForm.scrollIntoView({ behavior: 'smooth' });
+document.addEventListener("DOMContentLoaded", () => {
+    setTheme(localStorage.getItem("hafta7-theme") || "light");
 });
 
-// ============================================
-// 5. DİĞER İŞLEVLER
-// ============================================
+themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    setTheme(nextTheme);
+});
 
-// "Koşu Temizle" butonu - cards bölümüne scroll
-const scrollToCardsBtn = document.getElementById('scrollToCards');
-if (scrollToCardsBtn) {
-    scrollToCardsBtn.addEventListener('click', function () {
-        const cardsSection = document.getElementById('atoyler');
-        if (cardsSection) {
-            cardsSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-}
+registrationForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-// ============================================
-// 6. ERIŞILEBILİLİK VE KULLANICILIK
-// ============================================
-
-// Enter tuşu ile form submit
-registrationForm.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter' && event.target.tagName !== 'TEXTAREA') {
-        event.preventDefault();
-        registrationForm.dispatchEvent(new Event('submit'));
+    if (!validateForm()) {
+        formAlert.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
     }
+
+    createSummary();
 });
 
-// Console log - Development
-console.log('Hafta 7 - Bootstrap + JavaScript Başvuru Sistemi Yüklenmiştir');
-console.log('Tema Desteği: Açık ✓');
-console.log('Form Doğrulaması: Aktif ✓');
-console.log('Özet Oluşturma: Hazır ✓');
+registrationForm.addEventListener("reset", () => {
+    window.setTimeout(clearValidation, 0);
+});
+
+newRegistration.addEventListener("click", () => {
+    registrationForm.reset();
+    clearValidation();
+    resultSummary.classList.add("d-none");
+    emptyResult.classList.remove("d-none");
+    fields.fullName.focus();
+});
